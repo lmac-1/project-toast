@@ -19,7 +19,7 @@ function ToastPlayground() {
     setToastMessages(newToastMessages);
   };
 
-  const onSubmit = (event) => {
+  const handleCreateToast = (event) => {
     event.preventDefault();
     const newToastMessages = [
       ...toastMessages,
@@ -39,7 +39,7 @@ function ToastPlayground() {
 
       <ToastShelf toasts={toastMessages} handleDismiss={handleDismiss} />
 
-      <form className={styles.controlsWrapper} onSubmit={onSubmit}>
+      <form className={styles.controlsWrapper} onSubmit={handleCreateToast}>
         <div className={styles.row}>
           <label
             htmlFor="message"
@@ -85,7 +85,7 @@ function ToastPlayground() {
         <div className={styles.row}>
           <div className={styles.label} />
           <div className={`${styles.inputWrapper} ${styles.radioWrapper}`}>
-            <Button type="submit">Pop Toast!</Button>
+            <Button>Pop Toast!</Button>
           </div>
         </div>
       </form>
