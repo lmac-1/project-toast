@@ -8,12 +8,12 @@ import styles from "./ToastPlayground.module.css";
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isRendered, setIsRendered] = React.useState(false);
   const [message, setMessage] = React.useState("");
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
 
-  const closeToast = () => {
-    setIsVisible(false);
+  const handleDismiss = () => {
+    setIsRendered(false);
   };
 
   return (
@@ -22,8 +22,10 @@ function ToastPlayground() {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
-      {isVisible && (
-        <Toast message={message} variant={variant} closeToast={closeToast} />
+      {isRendered && (
+        <Toast variant={variant} handleDismiss={handleDismiss}>
+          {message}
+        </Toast>
       )}
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
@@ -71,7 +73,7 @@ function ToastPlayground() {
         <div className={styles.row}>
           <div className={styles.label} />
           <div className={`${styles.inputWrapper} ${styles.radioWrapper}`}>
-            <Button onClick={() => setIsVisible(true)}>Pop Toast!</Button>
+            <Button onClick={() => setIsRendered(true)}>Pop Toast!</Button>
           </div>
         </div>
       </div>
