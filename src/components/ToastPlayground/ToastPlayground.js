@@ -63,7 +63,13 @@ function ToastPlayground() {
         <div className={styles.row}>
           <div className={styles.label} />
           <div className={`${styles.inputWrapper} ${styles.radioWrapper}`}>
-            <Button>Pop Toast!</Button>
+            <Button
+              onClick={() => {
+                window.alert(`${variant} - ${message}`);
+              }}
+            >
+              Pop Toast!
+            </Button>
           </div>
         </div>
       </div>
